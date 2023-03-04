@@ -115,11 +115,11 @@ int shm_unlink(const char* name);
 
 Powyższa funkcja powoduje usunięcie pliku specjalnego z systemu plików, ale nie samego fragmentu pamięci współdzielonej. Nawet po usunięciu pliku fragment pamięci będzie istniał w systemie, dopóki jakiś proces będzie z niego korzystał, czyli będzie miał deskryptor związany z tym fragmentem lub cześć adresów procesu będzie mapowana na tę pamięć dzieloną. Co więcej, deskryptory i przyłączone fragmenty pozostaną w pełni funkcjonalne.
 
-Przykład send_message.c prezentuje prostą komunikację z wykorzystaniem pamięci dzielonej. Rodzic otwiera pamięć dzieloną, następnie tworzy dziecko i wpisuje do fragmentu jedno zdanie. Dziecko ma je odczytać. Synchronizacja jest wymuszona usypianiem procesów `sleep`, by działały w rozłącznych przedziałach czasu.
+Przykład [send_message.c](send_message.c) prezentuje prostą komunikację z wykorzystaniem pamięci dzielonej. Rodzic otwiera pamięć dzieloną, następnie tworzy dziecko i wpisuje do fragmentu jedno zdanie. Dziecko ma je odczytać. Synchronizacja jest wymuszona usypianiem procesów `sleep`, by działały w rozłącznych przedziałach czasu.
 
 ## Przykład: Anonimowa pamięć współdzielona
 
-Linux umożliwia na korzystanie z współdzielenie pamięci między procesami, bez jawnego użycia struktur SHM. Wynika to z faktu, że podczas operacji `fork`, przyłączone przestrzenie adresów są kopiowane, a niezbędne struktury do obsługi mapowania znajdują się w systemie operacyjnym. Pokazuje to przykład unnamed_memory.c.
+Linux umożliwia na korzystanie z współdzielenie pamięci między procesami, bez jawnego użycia struktur SHM. Wynika to z faktu, że podczas operacji `fork`, przyłączone przestrzenie adresów są kopiowane, a niezbędne struktury do obsługi mapowania znajdują się w systemie operacyjnym. Pokazuje to przykład [unnamed_memory.c](unnamed_memory.c).
 
 Program pozwala także zaprezentować pewne własności implementacji funkcji `mmap`: zmiana zdefiniowanych stałych może zmienić zachowanie programu.
 
